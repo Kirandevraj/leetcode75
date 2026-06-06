@@ -43,19 +43,20 @@ class Solution:
 
         matchedsubstr = ''
         finalmatchedsubstr = ''
-        for i in range(len(minlenstr)):
-            for j in range(i+1, len(minlenstr)+1):
-                substr = minlenstr[i:j]
+        # for i in range(len(minlenstr)):
+        i = 0
+        for j in range(i+1, len(minlenstr)+1):
+            substr = minlenstr[i:j]
 
-                if substr in maxlenstr:
-                    if len(substr) > len(matchedsubstr):
-                      matchedsubstr = substr
+            if substr in maxlenstr:
+                if len(substr) > len(matchedsubstr):
+                  matchedsubstr = substr
 
-                      if (len(minlenstr) % len(matchedsubstr) == 0 ) and ( len(maxlenstr) % len(matchedsubstr) == 0):
-                          if ((len(minlenstr) // len(matchedsubstr)) * matchedsubstr == minlenstr) and ((len(maxlenstr) // len(matchedsubstr)) * matchedsubstr == maxlenstr):
-                              if len(finalmatchedsubstr) < len(matchedsubstr):
-                                  finalmatchedsubstr = matchedsubstr
-        
+                  if (len(minlenstr) % len(matchedsubstr) == 0 ) and ( len(maxlenstr) % len(matchedsubstr) == 0):
+                      if ((len(minlenstr) // len(matchedsubstr)) * matchedsubstr == minlenstr) and ((len(maxlenstr) // len(matchedsubstr)) * matchedsubstr == maxlenstr):
+                          if len(finalmatchedsubstr) < len(matchedsubstr):
+                              finalmatchedsubstr = matchedsubstr
+      
         return finalmatchedsubstr
 
 
