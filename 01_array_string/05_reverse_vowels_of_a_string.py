@@ -69,7 +69,7 @@ if __name__ == "__main__":
             got = s.reverseVowels(*args)
             ok = got == expected
         except Exception as e:
-            got, ok = "<error: {}>".format(e), False
+            got, ok = "<error: {}>".format(repr(e)), False
         passed += ok
         print(("PASS" if ok else "FAIL"), "input=" + repr(args), "=> got", repr(got), "| expected", repr(expected))
     print("{}/{} passed".format(passed, len(cases)))
