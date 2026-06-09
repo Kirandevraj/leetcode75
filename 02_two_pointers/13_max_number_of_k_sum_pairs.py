@@ -31,7 +31,20 @@ from typing import List
 
 class Solution:
     def maxOperations(self, nums: List[int], k: int) -> int:
-        pass
+        nums = sorted(nums)
+        pairs = 0
+        L = 0
+        R = len(nums) - 1
+        while (L < R):
+            if (nums[L] + nums[R] == k):
+                pairs += 1
+                R -= 1
+                L += 1
+            elif (nums[L] + nums[R] > k):
+                R -= 1
+            else:
+                L += 1
+        return pairs
 
 
 if __name__ == "__main__":
