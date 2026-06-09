@@ -29,7 +29,15 @@ Hints:
 
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
-        pass
+        i = 0
+        for ch in t:
+            if i < len(s) and s[i] == ch:
+                i += 1
+        
+        if i == len(s):
+            return True
+        return False
+                
 
 
 if __name__ == "__main__":
