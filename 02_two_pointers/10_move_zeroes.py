@@ -26,8 +26,18 @@ from typing import List
 
 class Solution:
     def moveZeroes(self, nums: List[int]) -> None:
-        """Do not return anything, modify nums in-place instead."""
-        pass
+        """Do not retun anything, modify nums in-place instead."""
+        write = 0
+        for n in nums:
+            if n != 0:
+                nums[write] = n
+                write += 1
+        for i in range(write, len(nums)):
+            nums[i] = 0
+        return
+                    
+            
+        
 
 
 if __name__ == "__main__":
