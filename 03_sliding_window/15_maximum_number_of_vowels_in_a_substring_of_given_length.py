@@ -27,7 +27,26 @@ Hints:
 
 class Solution:
     def maxVowels(self, s: str, k: int) -> int:
-        pass
+        
+        win_count = 0
+
+        for i in s[:k]:
+            if i in 'aeiou':
+                win_count += 1
+        
+        best_win = win_count
+
+        for pos in range(k, len(s)):
+            if s[pos-k] in 'aeiou':
+                win_count -= 1
+
+            if s[pos] in 'aeiou':
+                win_count += 1
+            
+            if win_count > best_win:
+                best_win = win_count
+      
+        return best_win
 
 
 if __name__ == "__main__":
