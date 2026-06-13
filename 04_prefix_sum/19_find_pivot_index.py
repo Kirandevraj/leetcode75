@@ -35,7 +35,15 @@ from typing import List
 
 class Solution:
     def pivotIndex(self, nums: List[int]) -> int:
-        pass
+        total = sum(nums)
+        total_left = 0
+        total_right = total
+        for i in range(len(nums)):
+            if total_left == total_right - nums[i]:
+                return i
+            total_left += nums[i]
+            total_right -= nums[i]
+        return -1
 
 
 if __name__ == "__main__":

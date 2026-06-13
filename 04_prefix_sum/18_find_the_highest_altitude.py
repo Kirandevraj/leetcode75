@@ -32,7 +32,15 @@ from typing import List
 
 class Solution:
     def largestAltitude(self, gain: List[int]) -> int:
-        pass
+        prefix_sum = 0
+        highest_alt = 0
+        for i in range(len(gain)):
+            prefix_sum += gain[i]
+            if prefix_sum > highest_alt:
+                # print(highest_alt)
+                highest_alt = prefix_sum
+        return highest_alt
+
 
 
 if __name__ == "__main__":
