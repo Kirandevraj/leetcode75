@@ -34,7 +34,29 @@ from typing import List
 
 class Solution:
     def longestSubarray(self, nums: List[int]) -> int:
-        pass
+        left, right = 0, 0
+        zero_count = 0
+        best = 0
+        current = 0
+        for i in range(len(nums)):
+            if nums[i] == 0:
+                zero_count += 1
+                right += 1
+            else:
+                right += 1
+            
+            while zero_count > 1:
+                if nums[left] == 0:
+                    zero_count -= 1
+                left += 1
+            
+            current = right - left
+            if current > best:
+                best = current
+      
+        return best-1
+                
+
 
 
 if __name__ == "__main__":
