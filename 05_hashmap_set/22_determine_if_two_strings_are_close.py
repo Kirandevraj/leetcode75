@@ -1,3 +1,4 @@
+
 """
 1657. Determine if Two Strings Are Close
 Difficulty: Medium
@@ -33,8 +34,19 @@ Hints:
 
 class Solution:
     def closeStrings(self, word1: str, word2: str) -> bool:
-        pass
-
+        word1_dictionary = {}
+        for i in word1:
+            word1_dictionary[i] = word1_dictionary.get(i, 0) + 1
+        word2_dictionary = {}
+        for i in word2:
+            word2_dictionary[i] = word2_dictionary.get(i, 0) + 1
+        
+        
+        for i in word1_dictionary.keys():
+            if i not in word2_dictionary.keys():
+                return False
+        
+        return sorted(word1_dictionary.values()) == sorted(word2_dictionary.values())
 
 if __name__ == "__main__":
     s = Solution()

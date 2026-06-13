@@ -31,7 +31,24 @@ from typing import List
 
 class Solution:
     def equalPairs(self, grid: List[List[int]]) -> int:
-        pass
+        set1 = {}
+        for i in grid:
+            set1[tuple(i)] = set1.get(tuple(i), 0) + 1
+        n = len(grid)
+        column_grid = [[grid[i][j] for i in range(n)] for j in range(n)]
+        set2 = {}
+        for j in column_grid:
+            set2[tuple(j)] = set2.get(tuple(j), 0) + 1
+
+        # print(set1, set2)        
+        total_count = 0
+        for i in set1:
+            if i in set2:
+                total_count += set1[i] * set2[i]
+        
+        return(total_count)
+            
+            
 
 
 if __name__ == "__main__":
