@@ -30,7 +30,31 @@ from typing import List
 
 class Solution:
     def longestOnes(self, nums: List[int], k: int) -> int:
-        pass
+        left, right = 0, 0
+        zero_count  = 0
+        best = 0
+        for i in range(0, len(nums)):
+            if nums[right] == 1:
+                right +=1
+            else:
+                zero_count += 1
+                right += 1
+            while zero_count > k:
+                if nums[left] == 0:
+                    zero_count -= 1
+                    left += 1
+                    break
+                else:
+                    left += 1
+            current = right - left
+            if current > best:
+                best = current
+        return best
+                
+                
+                
+
+                
 
 
 if __name__ == "__main__":
