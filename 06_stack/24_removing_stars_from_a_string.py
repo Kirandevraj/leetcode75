@@ -29,7 +29,14 @@ Hints:
 
 class Solution:
     def removeStars(self, s: str) -> str:
-        pass
+        stack = []
+        for i in s:
+            if i == "*":
+                # del stack[-1]
+                stack.pop()
+            else:
+                stack.append(i)
+        return "".join(stack)
 
 
 if __name__ == "__main__":

@@ -38,7 +38,24 @@ from typing import List
 
 class Solution:
     def asteroidCollision(self, asteroids: List[int]) -> List[int]:
-        pass
+        stack = []
+        if len(stack) == 0:
+                stack.append(asteroids[0])
+        for i in range(1, len(asteroids)):
+            alive = 1
+            while asteroids[i] < 0 and alive == 1 and len(stack) != 0 and stack[-1] > 0:
+                if abs(asteroids[i]) < stack[-1]:
+                    alive = 0
+                elif abs(asteroids[i]) > stack[-1]:
+                    stack.pop()
+                elif abs(asteroids[i]) == stack[-1]:
+                    stack.pop()
+                    alive = 0
+            
+            if alive:
+                stack.append(asteroids[i])
+        return stack
+            
 
 
 if __name__ == "__main__":

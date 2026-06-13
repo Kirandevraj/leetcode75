@@ -34,7 +34,27 @@ Hints:
 
 class Solution:
     def decodeString(self, s: str) -> str:
-        pass
+        stack = []
+        current_text = ''
+        current_num = 0
+
+        for i in s:
+            if i.isdigit():
+                current_num = int(current_num) * 10 + int(i)
+                
+            elif i.isalpha():
+                current_text += i
+
+            elif i == '[':
+                stack.append([current_text, current_num])
+                current_text = ''
+                current_num = 0
+
+            elif i == ']':
+                prev_text, k = stack.pop()
+                current_text = prev_text + current_text * k
+        
+        return current_text
 
 
 if __name__ == "__main__":
