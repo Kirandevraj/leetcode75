@@ -42,7 +42,19 @@ from typing import Optional
 
 class Solution:
     def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        pass
+        
+        if head.next == None:
+            return None
+        
+        prev = None
+        slow = head
+        fast = head
+        while fast != None and fast.next != None:
+            prev = slow
+            slow = slow.next
+            fast = fast.next.next
+        prev.next = slow.next
+        return head
 
 
 if __name__ == "__main__":
