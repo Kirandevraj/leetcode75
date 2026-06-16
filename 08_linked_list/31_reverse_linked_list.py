@@ -36,8 +36,16 @@ from typing import Optional
 
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        pass
-
+        prev = None
+        curr = head
+        nxt = None
+        while curr != None:
+            nxt = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nxt
+        
+        return prev
 
 if __name__ == "__main__":
     def build(vals):
