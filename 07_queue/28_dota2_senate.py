@@ -30,7 +30,28 @@ Hints:
 
 class Solution:
     def predictPartyVictory(self, senate: str) -> str:
-        pass
+        rqueue = []
+        dqueue = []
+        for pos, i in enumerate(senate):
+            if i == 'R':
+                rqueue.append(pos)
+            elif i == 'D':
+                dqueue.append(pos)
+        
+        pos += 1
+        while len(rqueue) != 0 and len(dqueue) != 0:
+            rpos = rqueue.pop(0)
+            dpos = dqueue.pop(0)
+
+            if rpos < dpos:
+                rqueue.append(pos)
+            else:
+                dqueue.append(pos)
+            pos += 1
+        if len(rqueue) != 0:
+            return 'Radiant'
+        else:
+            return 'Dire'
 
 
 if __name__ == "__main__":
