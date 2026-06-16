@@ -39,7 +39,35 @@ from typing import Optional
 
 class Solution:
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        pass
+        if head == None or head.next == None:
+            return head
+        odd = None
+        even = None
+        even_head = None
+        odd_head = None
+        pos_counter = 0
+        while head != None:
+            if pos_counter % 2 == 0:
+                if odd == None:
+                    odd = head
+                    odd_head = odd
+                else:
+                    odd.next = head
+                    odd = odd.next
+            else:
+                if even == None:
+                    even = head
+                    even_head = even
+                else:
+                    even.next = head
+                    even = even.next
+            
+            
+            head = head.next
+            pos_counter += 1
+        even.next = None
+        odd.next = even_head
+        return odd_head
 
 
 if __name__ == "__main__":
